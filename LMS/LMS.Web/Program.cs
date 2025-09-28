@@ -1,7 +1,9 @@
-using LMS.Web.Data;
+using LMS.Infrastructure.Data;
+using LMS.Infrastructure.Extensions;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
+using System.Reflection;
 
 
 #region Configure BootstrapLogger
@@ -15,8 +17,6 @@ try
 
     var builder = WebApplication.CreateBuilder(args);
 
-
-
     #region Serilog Configuration
     builder.Host.UseSerilog((context, lc) => lc
         .MinimumLevel.Debug()
@@ -26,8 +26,19 @@ try
     );
     #endregion
 
+    #region Service Collection Based Dependency Injection
+    builder.Services.AddDependencyInjection();
+    #endregion
     // Add services to the container.
     var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+    var migrationAssembly = Assembly.GetAssembly(typeof(ApplicationDbContext));
+
+    //Add DbContext
+    builder.Services.AddDbContext<ApplicationDbContext>(options =>
+        options.UseSqlServer(connectionString, (x) => x.MigrationsAssembly(migrationAssembly)));
+
+    builder.Services.AddRazorPages();
+
     builder.Services.AddDbContext<ApplicationDbContext>(options =>
         options.UseSqlServer(connectionString));
     builder.Services.AddDatabaseDeveloperPageExceptionFilter();
