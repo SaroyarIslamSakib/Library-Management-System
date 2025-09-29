@@ -1,6 +1,10 @@
+using Cortex.Mediator.DependencyInjection;
+using LMS.Application.Features.Inventory.Commands;
 using LMS.Infrastructure.Data;
 using LMS.Infrastructure.Extensions;
+using Mapster;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.CodeAnalysis.Options;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 using System.Reflection;
@@ -29,6 +33,18 @@ try
     #region Service Collection Based Dependency Injection
     builder.Services.AddDependencyInjection();
     #endregion
+
+    #region Mediator Configuration
+    builder.Services.AddCortexMediator(
+        builder.Configuration,
+        new[] { typeof(Program), typeof(ProductAddCommand) },
+        options => options.AddDefaultBehaviors());
+    #endregion
+
+    #region Mapster Configuration
+    builder.Services.AddMapster();
+    #endregion
+
     // Add services to the container.
     var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
     var migrationAssembly = Assembly.GetAssembly(typeof(ApplicationDbContext));

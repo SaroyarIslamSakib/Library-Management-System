@@ -1,4 +1,8 @@
 using System.Diagnostics;
+using System.Threading.Tasks;
+using Cortex.Mediator;
+using LMS.Application.Features.Inventory.Commands;
+using LMS.Application.Features.Inventory.Queries;
 using LMS.Domain;
 using LMS.Domain.Entities;
 using LMS.Web.Models;
@@ -10,23 +14,29 @@ namespace LMS.Web.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IApplicationUnitOfWork _unitOfWork;
+        private readonly IMediator _mediator;
 
-        public HomeController(ILogger<HomeController> logger, IApplicationUnitOfWork unitOfWork)
+        public HomeController(ILogger<HomeController> logger, IMediator mediator)
         {
             _logger = logger;
-            _unitOfWork = unitOfWork;
+            _mediator = mediator;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            Product product = new()
+            var command = new ProductAddCommand()
             {
-                Name = "Monitor",
-                Price = 50000,
-                Id = Guid.NewGuid()
+                Name = "Laptop",
+                Price = 60000,
             };
-            _unitOfWork.ProductRepository.Add(product);
-            _unitOfWork.Save();
+            var product = await _mediator.SendCommandAsync<ProductAddCommand, Product>(command);
+
+            //var query = new ProductGetQuery() { Id = new Guid("33bcb694-a8d5-4789-a4e4-2a97119f91ee") };
+            //var product = await _mediator.SendQueryAsync<ProductGetQuery, Product>(query);
+
+
+            //var query = new ProductGetAllQuery();
+            //IList<Product> products = await _mediator.SendQueryAsync<ProductGetAllQuery, IList<Product>>(query);
             return View();
         }
 
