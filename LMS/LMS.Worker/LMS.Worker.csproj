@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>dotnet-LMS.Worker-be06365c-ba4f-4253-b268-322e3a04dc5f</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.11" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.WindowsServices" Version="9.0.11" />
+    <PackageReference Include="Serilog.Extensions.Hosting" Version="9.0.0" />
+    <PackageReference Include="Serilog.Settings.Configuration" Version="9.0.0" />
+    <PackageReference Include="Serilog.Sinks.File" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LMS.Application\LMS.Application.csproj" />
+    <ProjectReference Include="..\LMS.Domain\LMS.Domain.csproj" />
+    <ProjectReference Include="..\LMS.Infrastructure\LMS.Infrastructure.csproj" />
+  </ItemGroup>
+</Project>

@@ -4,7 +4,6 @@ using LMS.Infrastructure.Data;
 using LMS.Infrastructure.Extensions;
 using Mapster;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.CodeAnalysis.Options;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 using System.Reflection;
@@ -45,6 +44,10 @@ try
     builder.Services.AddMapster();
     #endregion
 
+    #region Docker IP Correction
+    //builder.WebHost.UseUrls("http://*:80");
+    #endregion
+
     // Add services to the container.
     var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
     var migrationAssembly = Assembly.GetAssembly(typeof(ApplicationDbContext));
@@ -83,6 +86,11 @@ try
     app.UseAuthorization();
 
     app.MapStaticAssets();
+
+    app.MapControllerRoute(
+        name: "areas",
+        pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}")
+        .WithStaticAssets();
 
     app.MapControllerRoute(
         name: "default",

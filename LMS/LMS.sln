@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.14.36518.9
+# Visual Studio Version 18
+VisualStudioVersion = 18.0.11222.15 d18.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LMS.Web", "LMS.Web\LMS.Web.csproj", "{4B54F40B-3863-4662-82A0-881361ECC7AC}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LMS.Application", "LMS.Application\LMS.Application.csproj", "{080EC5DD-BC3A-4BC4-BEC4-483124CC93DF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LMS.Infrastructure", "LMS.Infrastructure\LMS.Infrastructure.csproj", "{98870375-5759-404D-9898-B14398467F11}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LMS.Worker", "LMS.Worker\LMS.Worker.csproj", "{E9601507-1EB0-4E4A-B2AA-ACE17CC6AFE8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{98870375-5759-404D-9898-B14398467F11}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{98870375-5759-404D-9898-B14398467F11}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{98870375-5759-404D-9898-B14398467F11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9601507-1EB0-4E4A-B2AA-ACE17CC6AFE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9601507-1EB0-4E4A-B2AA-ACE17CC6AFE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9601507-1EB0-4E4A-B2AA-ACE17CC6AFE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9601507-1EB0-4E4A-B2AA-ACE17CC6AFE8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

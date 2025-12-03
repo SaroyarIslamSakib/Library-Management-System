@@ -1,0 +1,14 @@
+services:
+  web:
+    image: sisakib232/lms-web:v1
+    env_file:
+      - LMS.Web/web.env
+    volumes:
+      - demoweb-data:/app/Logs
+    ports:
+      - "8080:80"
+    entrypoint: ["dotnet", "LMS.Web.dll"]
+
+volumes:
+  demoweb-data:
+    external: true
