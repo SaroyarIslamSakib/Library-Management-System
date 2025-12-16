@@ -24,12 +24,15 @@ namespace LMS.Web.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var command = new ProductAddCommand()
-            {
-                Name = "Laptop",
-                Price = 60000,
-            };
-            var product = await _mediator.SendCommandAsync<ProductAddCommand, Product>(command);
+            //var command = new ProductAddCommand()
+            //{
+            //    Name = "Laptop",
+            //    Price = 60000,
+            //    Description = "Dell Inspiron 15",
+            //    StockQuantity = 10,
+            //    IsAvailable = true
+            //};
+            //var product = await _mediator.SendCommandAsync<ProductAddCommand, Product>(command);
 
             //var query = new ProductGetQuery() { Id = new Guid("33bcb694-a8d5-4789-a4e4-2a97119f91ee") };
             //var product = await _mediator.SendQueryAsync<ProductGetQuery, Product>(query);

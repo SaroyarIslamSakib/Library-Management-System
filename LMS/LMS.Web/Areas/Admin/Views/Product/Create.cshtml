@@ -1,0 +1,107 @@
+﻿@model CreateProductModel
+@{
+    ViewData["Title"] = "Product Create";
+}
+
+<!--begin::App Content Header-->
+<div class="app-content-header">
+    <!--begin::Container-->
+    <div class="container-fluid">
+        <!--begin::Row-->
+        <div class="row">
+            <div class="col-sm-6"><h3 class="mb-0">General Form</h3></div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-end">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">General Form</li>
+                </ol>
+            </div>
+        </div>
+        <!--end::Row-->
+    </div>
+    <!--end::Container-->
+</div>
+<!--end::App Content Header-->
+<!--begin::App Content-->
+<div class="app-content">
+    <!--begin::Container-->
+    <div class="container-fluid">
+        <!--begin::Row-->
+        <div class="row g-4">
+            
+            <!--begin::Col-->
+            <div class="col-md-6">
+                <!--begin::Product Form-->
+                <div class="card card-primary card-outline mb-4">
+                    <!--begin::Header-->
+                    <div class="card-header"><div class="card-title">Create a new product</div></div>
+                    <!--end::Header-->
+                    <!--begin::Form-->
+                    <form asp-antiforgery="true" asp-area="Admin" asp-controller="Product" asp-action="Create">
+                        <!--begin::Body-->
+                        <div class="card-body">
+                            <!--begin::Col-->
+                            <div class="col-12">
+                                <div asp-validation-summary="All"
+                                    class="callout callout-info">
+                                </div>
+                            </div>
+                            <!--end::Col-->
+                            <div class="mb-3">
+                                <label asp-for="Name" class="form-label">Name</label>
+                                <input type="text"
+                                       class="form-control"
+                                       asp-for="Name"
+                                       aria-describedby="nameHelp" />
+                                <span asp-validation-for="Name" class="text-danger"></span>
+                                <div id="emailHelp" class="form-text">
+                                    Name should be maximum 100 charecters
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="Price" class="form-label">Price</label>
+                                <input asp-for="Price" type ="text" class="form-control" />
+                                <span asp-validation-for="Price" class="text-danger"></span>
+
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="StockQuantity" class="form-label">Stock Quantity</label>
+                                <input type="number" class="form-control" asp-for="StockQuantity" />
+                                
+                            </div>
+                            <div class="input-group mb-3">
+                                <input type="file" class="form-control" id="inputGroupFile02" />
+                                <label class="input-group-text" for="inputGroupFile02">Upload</label> 
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="Description" class="form-label">Description</label>
+                                <textarea rows="5" asp-for="Description" class="form-control" aria-label="With textarea"></textarea>
+                                <span asp-validation-for="Description" class="text-danger"></span>
+
+                            </div>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input asp-for="IsAvailable" type="checkbox" class="form-check-input" />
+                            <label asp-for="IsAvailable" class="form-check-label">Available</label>
+                        </div>
+                        <!--end::Body-->
+                        <!--begin::Footer-->
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary">Create</button>
+                        </div>
+                        <!--end::Footer-->
+                    </form>
+                    <!--end::Form-->
+                </div>
+                <!--end::Quick Example-->
+
+
+            </div>
+            <!--end::Container-->
+        </div>
+        <!--end::App Content-->
+@section Scripts
+{
+            <script src="~/lib/jquery/dist/jquery.min.js"></script>
+            <partial name="_ValidationScriptsPartial" />
+}
