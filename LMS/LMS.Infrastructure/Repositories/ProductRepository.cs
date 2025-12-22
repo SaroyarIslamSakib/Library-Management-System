@@ -15,5 +15,10 @@ namespace LMS.Infrastructure.Repositories
         public ProductRepository(ApplicationDbContext context) : base(context)
         {
         }
+
+        public async Task<(IList<Product>, int total, int totalDisplay)> GetPagedProductsAsync(int pageIndex, int pageSize, string? searchText, string? sortOrder)
+        {
+            return await GetDynamicAsync(x => x.Name.Contains(searchText), sortOrder, null, pageIndex, pageSize);
+        }
     }
 }

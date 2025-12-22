@@ -9,6 +9,6 @@ namespace LMS.Domain.Repositories
 {
     public interface IProductRepository : IRepository<Product, Guid>  
     {
-
+        Task<(IList<Product>, int total, int totalDisplay)> GetPagedProductsAsync(int pageIndex, int pageSize, string? searchText, string? sortOrder);
     }
 }

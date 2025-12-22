@@ -6,7 +6,7 @@
             role="menu"
             data-accordion="false">
             <li class="nav-item menu-open">
-                <a href="#" class="nav-link active">
+                <a asp-area="Admin" asp-controller="Dashboard" asp-action="Index" class="nav-link active">
                     <i class="nav-icon bi bi-speedometer"></i>
                     <p>
                         Dashboard
@@ -15,15 +15,15 @@
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="./index.html" class="nav-link active">
+                        <a asp-area="Admin" asp-controller="Product" asp-action="Index" asp class="nav-link active">
                             <i class="nav-icon bi bi-circle"></i>
-                            <p>Dashboard v1</p>
+                            <p>Products</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="./index2.html" class="nav-link">
+                        <a asp-area="Admin" asp-controller="Product" asp-action="Create" class="nav-link">
                             <i class="nav-icon bi bi-circle"></i>
-                            <p>Dashboard v2</p>
+                            <p>Create</p>
                         </a>
                     </li>
                     <li class="nav-item">
